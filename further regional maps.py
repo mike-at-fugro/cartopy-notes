@@ -43,3 +43,30 @@ ax.add_feature(cfeature.LAKES, linewidth = 0.5, edgecolor="blue", alpha=0.5)
 ax.add_feature(cfeature.RIVERS, linewidth = 0.5, edgecolor="blue")
 
 plt.show()
+
+
+"""
+    Stinky New York
+
+    low resolution
+
+"""
+latN = 45.2
+latS = 40.2
+lonW = -80.0
+lonE = -71.5
+cLat = (latN + latS) / 2
+cLon = (lonW + lonE) / 2
+projLccNY = ccrs.LambertConformal(central_longitude=cLon, central_latitude=cLat)
+fig = plt.figure(figsize=(15, 10))
+ax = plt.subplot(1, 1, 1, projection=projLccNY)
+ax.set_extent([lonW, lonE, latS, latN], crs=proj_PC)
+ax.set_facecolor(cfeature.COLORS['water'])
+ax.add_feature(cfeature.LAND)
+ax.add_feature(cfeature.COASTLINE)
+ax.add_feature(cfeature.BORDERS, linestyle='--')
+ax.add_feature(cfeature.LAKES, alpha=0.5)
+ax.add_feature(cfeature.STATES)
+ax.add_feature(cfeature.RIVERS)
+ax.set_title('New York and Vicinity')
+plt.show()
